@@ -1,0 +1,1 @@
+import{Ga as n,Ya as o,Za as m,kb as p}from"./chunk-HA26ZXMN.js";var a=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-payment-methods"]],decls:2,vars:0,template:function(e,i){e&1&&(o(0,"p"),p(1,"payment-methods works!"),m())},encapsulation:2})};export{a as PaymentMethodsComponent};

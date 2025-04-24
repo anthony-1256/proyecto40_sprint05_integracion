@@ -1,0 +1,1 @@
+import{Ga as t,Ya as a,Za as s,kb as o}from"./chunk-HA26ZXMN.js";var m=class n{static \u0275fac=function(e){return new(e||n)};static \u0275cmp=t({type:n,selectors:[["app-address-management"]],decls:2,vars:0,template:function(e,r){e&1&&(a(0,"p"),o(1,"address-management works!"),s())},encapsulation:2})};export{m as AddressManagementComponent};
