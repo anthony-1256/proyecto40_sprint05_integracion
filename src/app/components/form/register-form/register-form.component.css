@@ -1,0 +1,85 @@
+.container {
+    max-width: 100%;
+    padding: 20px;    
+}
+
+form {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+form input,
+form select {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.5rem;
+}
+
+form .form-contol,
+form .form-select {
+    margin-bottom: 0.5rem !important;
+}
+
+
+form small.text-danger {
+    margin-top: 2px;
+    font-size: 0.8rem;
+    line-height: 1.1;
+}
+
+form .form-contol,
+form .form-select {
+    margin-bottom: 0 !important;
+}
+
+.age-gen-reg, .usr-psw-reg {
+    display: flex;
+    justify-content: space-around;    
+    gap: 15px;
+}
+
+.age-reg,
+.gen-reg,
+.email-reg,
+.psw-reg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.name-reg, .email-reg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#name-reg, #email-reg {
+    display: flex;    
+    justify-content: space-between;
+    gap: 15px;
+}
+
+#name-reg input, #email-reg input {
+    width: 400px;
+}
+
+.error-msg{
+    min-height: 18px;
+    font-size: 0.75rem;
+    line-height: 1.1;
+    margin-top: 4px;
+    margin-bottom: 6px;
+}
+
+.error-msg:empty {
+    visibility: hidden;
+}

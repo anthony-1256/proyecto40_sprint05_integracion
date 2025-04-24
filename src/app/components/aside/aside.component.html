@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Productos en la categoría: {{ selectedCategory }}</h2>
+
+    <div class="row" *ngIf="filteredProducts.length > 0; else noProducts">
+        @for ( product of filteredProducts; track product ) {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow" (click)="viewDetails(product.id)" style="cursor: pointer;">
+                    <div class="card-body">                    
+                        <h5 class="card-title"><strong>{{ product.name }}</strong></h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p class="card-text">
+                            <strong>Precio:</strong> {{ product.price | currency }}
+                        </p>
+                        <p class="card-text">
+                            <strong>Categoría:</strong> {{ product.category }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <ng-template #noProducts>
+        <div class="alert alert-info text-center">
+            No hay productos disponibles en esta categoría.
+        </div>
+    </ng-template>
+</div>

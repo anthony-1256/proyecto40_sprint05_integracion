@@ -1,0 +1,30 @@
+<!-- ***** offers.component.html ***** -->
+<div class="container mt-4">
+    <div class="row">
+      @for (product of productsWithOffer; track product.id) {
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm border-@if (product.isOffer) {success} @else {secondary}">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">
+                <strong>SKU:</strong> {{ product.sku }}<br>
+                <strong>Categoría:</strong> {{ product.category }}<br>
+                <strong>Precio:</strong> ${{ product.price }}<br>
+                <strong>Stock:</strong> {{ product.quantity }} unidades
+              </p>
+              <button 
+                class="btn"
+                [ngClass]="product.isOffer ? 'btn-outline-danger' : 'btn-outline-success'"
+                (click)="toggleOffer(product)">
+                @if (product.isOffer) {
+                  Quitar oferta
+                } @else {
+                  Poner en oferta
+                }
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+</div>

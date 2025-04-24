@@ -1,0 +1,58 @@
+<!-- ***** product-list.component.html ***** -->
+<div class="container mt-4">
+  <h2 class="text-center mb-3">Gestión de Productos</h2>
+
+  @if (productsToEdit.length > 0) {
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Categoría</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of productsToEdit; track product) {
+          <tr>
+            <td>{{ product.id }}</td>
+            <td><input [(ngModel)]="product.name" class="form-control"></td>
+            <td><input [(ngModel)]="product.description" class="form-control"></td>
+            <td><input type="number" [(ngModel)]="product.price" class="form-control"></td>
+            <td><input [(ngModel)]="product.category" class="form-control"></td>
+            <td>
+              <button class="btn btn-sm btn-danger me-2" (click)="onDelete(product.id)">
+                Eliminar
+              </button>
+              <button class="btn btn-sm btn-success" (click)="saveProduct(product)" [disabled]="!hasChanges(product)">
+                Guardar
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <div class="alert alert-info text-center">
+      No hay productos registrados.
+    </div>
+  }
+</div>
+
+<!-- Botón para desplegar el formulario flotante -->
+<div class="text-center mt-4">
+  <button 
+    class="btn btn-outline-primary"
+    (click)="onToggleAddProductForm()">
+    + Agregar nuevo producto
+  </button>
+</div>
+
+<!-- Formulario flotante para agregar producto -->
+<div *ngIf="isFormVisible">
+  <div class="floating-form">
+    <app-add-products [visible]="true"></app-add-products>
+  </div>
+</div>

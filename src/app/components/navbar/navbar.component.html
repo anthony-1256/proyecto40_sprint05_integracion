@@ -1,0 +1,142 @@
+<nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">FullStorage</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!-- ******************************************************************************** -->
+        <!-- Siempre visible -->
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/inicio']">Inicio</a>
+        </li>        
+
+        <!-- ******************************************************************************** -->
+        <!-- Menú según tipo de usuario -->        
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/productos']">Productos</a>
+        </li>        
+
+        <!-- ******************************************************************************** -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Settings
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" 
+                 
+                 (click)="!isDarkMode && toggleMode()">
+                 Modo Oscuro
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" 
+                 
+                 (click)="isDarkMode && toggleMode()">
+                 Modo Claro
+              </a>
+            </li>
+          </ul>
+        </li>        
+
+        <!-- ******************************************************************************** -->
+        <!-- Mi cuenta -->
+        <li class="nav-item dropdown" *ngIf="role === 'guest'">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Ingresar
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/auth/login']">Iniciar sesión</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" [routerLink]="['/auth/register']">Registro</a></li>
+          </ul>
+        </li>
+      
+      <li class="nav-item dropdown" *ngIf="role === 'user'">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            {{ currentUser.username }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/perfil/editar']">Perfil</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/perfil/carrito']">Carrito</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
+          </ul>
+      </li>
+      
+      <li class="nav-item dropdown" *ngIf="role === 'admin'">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Administrador - {{ currentUser.username }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/admin-dashboard/inventory']">Gestión de Inventarios</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/admin-dashboard/offers']">Gestión de Ofertas</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/admin-dashboard/usersAdmin']">Gestión de Usuarios</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
+          </ul>
+      </li>
+
+        <!-- ******************************************************************************** -->
+        <!-- Información del usuario -->
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">            
+          </a>
+        </li>
+
+      </ul>
+
+      <!-- ******************************************************************************** -->
+      <!-- Buscar -->
+      <form class="d-flex" (ngSubmit)="onSearch()" role="search">
+        <input
+        type="search"
+        class="form-control me-2"
+        [(ngModel)]="searchTerm"
+        name="searchTerm"
+        placeholder="Buscar productos..."
+        (keydown.enter)="onSearch()"
+        (blur)="onBlurSearch()">
+        <button class="btn btn-outline-success me-2" type="submit">Buscar</button>
+      </form>
+
+      <!-- ******************************************************************************** -->
+      <!-- Toggle sidebar -->
+      <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+        aria-expanded="false" aria-label="Toggle sidebar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ******************************************************************************** -->
+<!-- Sidebar -->
+<div class="collapse collapse-left" #navbarToggleExternalContent id="navbarToggleExternalContent" data-bs-theme="dark">
+  <div class="p-4 text-white">
+    <div>
+      <h5 class="h4">Dispositivos de Almacenamiento</h5>
+      <!-- Llamamos a `closeSidebar()` para cerrar la barra lateral -->
+      <button (click)="closeSidebar()">X</button> 
+    </div>
+    <hr class="bg-light">
+    <ul>
+      <li><a [routerLink]="['/categoria', 'HDD']" (click)="closeSidebar()">Discos Duros Mecánicos (HDD)</a></li>
+      <li><a [routerLink]="['/categoria', 'SSD_SATA']" (click)="closeSidebar()">SSD SATA</a></li>
+      <li><a [routerLink]="['/categoria', 'SSD_M2']" (click)="closeSidebar()">SSD M.2 NVMe</a></li>
+      <li><a [routerLink]="['/categoria', 'MicroSD']" (click)="closeSidebar()">MicroSD</a></li>
+      <li><a [routerLink]="['/categoria', 'SD']" (click)="closeSidebar()">Tarjetas SD</a></li>
+      <li><a [routerLink]="['/categoria', 'USB']" (click)="closeSidebar()">Memorias USB</a></li>
+    </ul>    
+  </div>
+</div>

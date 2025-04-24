@@ -1,0 +1,46 @@
+/* UMC001 - user-management.component.css */
+
+/* mt = Eliminar márgenes exteriores del contenedor */
+.container {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* mt = Hacer scroll horizontal si la tabla se desborda */
+.table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* ob = Ajustar campos de entrada según el tipo */
+.table input,
+.table select {
+  max-width: 100%;
+  font-size: 0.9rem; /* Tamaño base ajustado */
+}
+
+/* ob = Estilo específico para campos pequeños */
+input[name="id"],
+input[name="age"] {
+  width: 60px;
+  font-size: 0.85rem;
+}
+
+/* ob = Campos medianos con font-size reducido */
+input[name="name"],
+input[name="username"],
+input[name="email"] {
+  width: 180px;
+  font-size: 0.8rem;
+}
+
+/* mt = Prevenir desbordes de botones */
+.table button {
+  white-space: nowrap;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+}

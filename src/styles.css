@@ -1,1 +1,110 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* MODO CLARO */
+body.clear-mode {
+    background-color: #ffffff;
+    color: #000000;
+    transition: all 0.3s ease;
+}
+
+body.clear-mode .navbar {
+    background-color: #f8f9fa;
+    color: #000000;
+}
+
+body.clear-mode .dropdown-menu {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.clear-mode .dropdown-item:hover {
+    background-color: #e9ecef;
+}
+
+/* Estilos de los formularios en modo claro */
+body.clear-mode input,
+body.clear-mode textarea,
+body.clear-mode select,
+body.clear-mode .form-control {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccc;
+}
+
+body.clear-mode .form-label {
+    color: #000000;
+}
+
+/* NAVBAR MODO CLARO */
+body.clear-mode .navbar {
+    background-color: #f8f9fa !important;
+    color: #000;
+}
+
+body.clear-mode .nav-link,
+body.clear-mode .navbar-brand {
+    color: #000 !important;
+}
+
+/* MODO OSCURO */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .navbar {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+body.dark-mode .navbar a {
+    color: #ffffff;
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: #444;
+}
+
+/* Estilos de los formularios en modo oscuro */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select,
+body.dark-mode .form-control {
+    background-color: #333333; /* Fondo oscuro para los campos */
+    color: #ffffff; /* Texto blanco */
+    border: 1px solid #555555; /* Borde de los campos */
+}
+
+body.dark-mode .form-label {
+    color: #ffffff; /* Etiquetas blancas para contrastar */
+}
+
+/* Para el foco en los campos */
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus,
+body.dark-mode .form-control:focus {
+    border-color: #007bff; /* Azul o el color que prefieras */
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5); /* Resaltado del campo */
+}
+
+/* NAVBAR MODO OSCURO */
+body.dark-mode .navbar {
+    background-color: #1f1f1f !important;
+    color: #fff;
+}
+
+body.dark-mode .nav-link,
+body.dark-mode .navbar-brand {
+    color: #fff !important;
+}
+
+body.dark-mode .nav-link:hover {
+    color: #adb5bd !important;
+}

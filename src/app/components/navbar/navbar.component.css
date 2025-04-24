@@ -1,0 +1,15 @@
+.collapse-left {
+    position: fixed;
+    top: 56px; /* altura del navbar */
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #343a40;
+    z-index: 1050;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+  }
+  
+  .collapse.show.collapse-left {
+    transform: translateX(0);
+  }

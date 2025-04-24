@@ -1,0 +1,12 @@
+/* Asegura que solo haya línea inferior por fila */
+table.table > thead th,
+table.table > tbody td,
+table.table > tfoot td {
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Opcional: suaviza bordes de inputs y botones */
+input.form-control-sm,
+button.btn-sm {
+  border-radius: 0.375rem;
+}

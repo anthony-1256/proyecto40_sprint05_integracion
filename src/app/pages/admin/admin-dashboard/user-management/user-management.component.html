@@ -1,0 +1,102 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Gestión de Usuarios</h2>
+
+    <!-- mt = Mostrar tabla solo si hay usuarios -->
+    @if (users.length > 0) {
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Género</th>
+                    <th>Email</th>
+                    <th>Usuario</th>
+                    <th>Contraseña</th>
+                    <th>Rol</th>
+                    <th>Asignación de Rol</th>
+                    <th>Guardar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- mt = Iterar sobre los usuarios con @for -->
+                @for ( user of users; track user ) {
+                    <tr>
+                        <td>
+                            <input type="number" name="id" id="id-{{user.id}}" [(ngModel)]="user.id" />
+                          </td>
+                          
+                          <td>
+                            <input type="text" name="name" id="name-{{user.id}}" autocomplete="name" [(ngModel)]="user.name" />
+                          </td>
+                          
+                          <td>
+                            <input type="number" name="age" id="age-{{user.id}}" [(ngModel)]="user.age" />
+                          </td>
+                          
+                          <td>
+                            <select id="gender-{{user.id}}" [(ngModel)]="user.gender" name="gender-{{user.id}}">
+                              <option value="Masculino">Masculino</option>
+                              <option value="Femenino">Femenino</option>
+                            </select>
+                          </td>
+                          
+                          <td>
+                            <input type="email" name="email" id="email-{{user.id}}" autocomplete="email" [(ngModel)]="user.email" />
+                          </td>
+                          
+                          <td>
+                            <input type="text" name="username" id="username-{{user.id}}" autocomplete="username" [(ngModel)]="user.username" />
+                          </td>
+                          
+                          <td>
+                            <input type="password" name="password" id="password-{{user.id}}" autocomplete="current-password" [(ngModel)]="user.password" />
+                          </td>
+                          
+                        <td>
+                             <!-- fn = Mostrar badge de admin o usuario dependiendo del rol -->
+                            @if ( user.admin ) {
+                                <span class="badge bg-success">Admin</span>
+                            } @else {
+                                <span class="badge bg-secondary">Usuario</span>
+                            }
+                        </td>
+                        <td>
+                            <!-- fn = Botón para eliminar usuario -->
+                            <button class="btn btn-sm btn-danger me-2"
+                            (click)="deleteUser(user.id)">
+                            Eliminar
+                            </button>
+
+                            <!-- fn = Botón para asignar o quitar admin -->
+                            @if ( !user.admin ) {
+                                <button
+                                class="btn btn-sm btn-primary"
+                                (click)="makeAdmin(user)">
+                                Hacer Admin
+                                </button>
+                            }@else {
+                                <button
+                                class="btn btn-sm btn-warning"
+                                (click)="removeAdmin(user)">
+                                    Quitar Admin
+                                </button>
+                            }
+                        </td>
+                        <td><button
+                            (click)="saveUser(user)"
+                            [disabled]="!hasChanges(user)">
+                            Guardar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    } @else {
+
+        <!-- ob = Mensaje si no hay usuarios -->
+        <div class="alert alert-info text-center">
+            No hay usuarios registrados aún.
+        </div>
+    }
+</div>

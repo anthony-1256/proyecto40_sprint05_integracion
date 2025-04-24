@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <!-- Mostrar mensaje si no hay productos en oferta -->
+  <p *ngIf="offerProducts.length === 0" class="text-warning">
+    En este momento no hay ofertas disponibles.
+  </p>
+
+  <!-- Carrusel si hay productos en oferta -->
+  <div *ngIf="offerProducts.length > 0" id="offerCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <!-- Iterar sobre los productos en oferta -->
+      <div class="carousel-item" *ngFor="let product of offerProducts; let i = index" [class.active]="i === 0">
+
+        <div class="card h-100">
+          
+          <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">
+              <strong>SKU:</strong> {{ product.sku }}<br>
+              <strong>Precio:</strong> ${{ product.price }}<br>
+              <strong>Categoría:</strong> {{ product.category }}
+            </p>
+            <button (click)="viewDetails(product.id)">Ver detalles</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controles del carrusel -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#offerCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#offerCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>

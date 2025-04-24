@@ -1,0 +1,39 @@
+.footer,
+.up-us-left,
+.up-privacy-center,
+.up-contact-rigth,
+.down-socials,
+.down-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.up-footer,
+.down-footer,
+#socials-list {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 20px 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+li {
+    list-style: none;
+}
+
+.down-text,
+.down-text a,
+li,
+li a {
+    text-decoration: none;
+    color: blue;
+}

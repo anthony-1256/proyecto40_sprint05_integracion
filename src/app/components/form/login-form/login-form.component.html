@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container w-50">
+
+    <form [formGroup]="form" (ngSubmit)="onLogin()" class="p-4 border rounded shadow bg-light">
+      <h2 class="text-center mb-3">Iniciar Sesión</h2>
+
+      <div class="usr-login">
+        <div id="usr-login">
+          <label for="username" class="form-label">Usuario</label>
+          <input type="text" id="username" name="username" autocomplete="username" class="form-control" formControlName="username">
+        </div>
+        <div class="error-msg">
+          @if (form.get('username')?.hasError('required') && form.get('username')?.touched) {
+            <small class="text-danger">¡Este campo es obligatorio!</small>
+          }
+        </div>
+      </div>
+
+      <div class="psw-login mt-2">
+        <div id="psw-login">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" class="form-control" formControlName="password">
+        </div>
+        <div class="error-msg">
+          @if (form.get('password')?.hasError('required') && form.get('password')?.touched) {
+            <small class="text-danger">¡Este campo es obligatorio!</small>
+          }
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 mt-3">Entrar</button>
+
+      <div class="text-center mt-3">
+        Formulario: {{ form.valid }}
+        @if (form.valid) { <span class="text-success">Listo para guardar</span> }
+        @else { <span class="text-danger">Aún NO lo puedes guardar</span> }
+      </div>
+    </form>
+  </div>
+</div>

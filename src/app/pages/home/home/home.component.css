@@ -1,0 +1,15 @@
+.carousel-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 300px;
+  margin: 10px;
+}
+
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+}

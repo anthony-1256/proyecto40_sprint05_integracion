@@ -1,0 +1,70 @@
+<div class="container my-4">
+    <h2 class="mb-4">Carrito de Compras</h2>
+
+    @if (cartItems.length === 0) {
+        <p class="text-muted">El carrito esta vacío.</p>
+    } @else {
+        <div class="table-responsive">
+            <table class="table w-100 table-borderless align-middle">
+                <thead class="border-bottom">
+                    <tr>
+                        <th>#</th>
+                        <th>SKU</th>
+                        <th>Descripción</th>
+                        <th>Categoría</th>
+                        <th>Almacenamiento</th>
+                        <th class="text-end">Precio Unitario</th>
+                        <th class="text-center">Cantidad</th>
+                        <th class="text-end">Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of cartItems; track item.sku) {
+                      <tr class="border-bottom">
+                        <td>{{ cartItems.indexOf(item) + 1 }}</td>
+                        <td>{{ item.sku }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.category }}</td>
+                        <td>{{ item.capacity }}</td>
+                        <td class="text-end">{{ item.price | currency }}</td>
+                        <td class="text-center">
+                          <input
+                            type="number"
+                            class="form-control form-control-sm text-center"
+                            [value]="item.quantity"
+                            (change)="onQuantityChange($event, item)"
+                            min="1"
+                            max="10"
+                            style="width: 70px;" />
+                        </td>
+                        <td class="text-end">{{ getItemTotal(item) | currency }}</td>
+                        <td class="text-end">
+                          <button class="btn btn-sm btn-outline-danger" (click)="removeItemByRef(item)">
+                            <i class="bi bi-x">Eliminar</i>
+                          </button>
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                <tfoot>
+                    <tr class="border-top">
+                        <td colspan="7" class="text-end fw-bold">Total:</td>
+                        <td class="text-end fw-bold">{{ getCartTotal() | currency }}</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="mt-4 text-end">
+            <button class="btn btn-primary" (click)="goToProducts()">
+                Agregar más productos
+            </button>
+
+            <button class="btn btn-success ms-2" (click)="confirmPurchase()">
+              Realizar compra
+            </button>
+        </div>
+    }
+</div>

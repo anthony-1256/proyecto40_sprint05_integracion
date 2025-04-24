@@ -1,0 +1,42 @@
+form label {
+font-weight: bold;
+font-size: 18px;
+}
+
+form .form-control,
+form .form-select {
+margin-bottom: 0.5rem !important;
+}
+
+form small.text-danger {
+margin-top: 2px;
+font-size: 0.8rem;
+line-height: 1.1;
+}
+
+.usr-login,
+.psw-login {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+#usr-login,
+#psw-login {
+display: flex;
+justify-content: space-between;
+gap: 15px;
+width: 100%;
+}
+
+#usr-login input,
+#psw-login input {
+width: 400px;
+}
+
+.error-msg {
+min-height: 20px;
+margin-top: -10px;
+margin-bottom: 4px;
+}
